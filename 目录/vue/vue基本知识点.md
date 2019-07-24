@@ -222,3 +222,34 @@ A.过度的类名：
   }
   </style>
   ```
+
+12.Vue中的$route和$router之前的区别是什么？
+
+A.$route是用来获取路由信息的
+
+```vue
+<script>
+//字符串，等于当前路由对象的路径，会被解析成绝对路径，如："/shop/goods"
+$route.path
+//对象，包含路由中的动态片段和全匹配片段的键值对 。
+$route.params
+//对象，包含路由中查询参数的键值对。例如，对于 /home/news/detail/01?favorite=yes ，
+//会得到$route.query.favorite == ‘yes’ 。
+$route.query
+//路由规则所属的路由器（以及其所属的组件）。
+$route.router
+//数组，包含当前匹配的路径中所包含的所有片段所对应的配置参数对象。
+$route.matched
+//当前路径的名字，如果没有使用具名路径，则名字为空。
+//所以我们可以通过$route.来获取到路由里的这些信息为自己所用。这就是 $route！
+$route.name
+</script>
+```
+
+B.$router的作用是进行路由跳转的
+
+```
+// 从当前页面跳转到-1页面，也就是上一页
+$router.go(-1);
+```
+
