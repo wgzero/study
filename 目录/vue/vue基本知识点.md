@@ -63,7 +63,7 @@ B.当computed、methods、watch都可以使用时，优先实现computed，因�
 A.通过对象的形式来绑定
 
 ```vue
-
+<div v-bind:class='{actived: isActived}'></div>
 ```
 
 B.数组的语法：
@@ -182,4 +182,43 @@ C.系统修饰符：
 
 ### 11.进入/离开&&列表动画
 
-A.
+A.过度的类名：
+
+- v-enter
+
+- v-enter-active
+
+- v-enter-to
+
+- v-leave
+
+- v-leave-active
+
+- v-leave-to
+
+  ```vue
+  <div id="demo">
+    <button v-on:click="show = !show">
+      Toggle
+    </button>
+    <transition name="fade">
+      <p v-if="show">hello</p>
+    </transition>
+  </div>
+  <script>
+      new Vue({
+        el: '#demo',
+        data: {
+          show: true
+        }
+      })
+  </script>
+  <style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  </style>
+  ```
