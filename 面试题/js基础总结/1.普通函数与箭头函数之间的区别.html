@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 
+    普通函数与箭头函数之间的区别：
+    A.普通函数：是指当前环境下能取到值，就是改该值。如果取不到值就往上一层继续找。
+    B.箭头函数：是指它所在的上下文（定义时的位置）的环境。
+ -->
+
+<body>
+    <!-- <script>
+        const obj = {
+            number: 10,
+            show() {
+                console.log(this.number * 2);
+            },
+            // 这里this指向的上下文环境就是window
+            test: () => {
+                console.log(this.number * 2 * Math.PI);
+            }
+        }
+
+        obj.show(); // 20
+        obj.test(); // NAN   
+
+    </script> -->
+
+    <!-- <script>
+        // var和let的区别：从es6开始全局变量将逐步与顶层对象的属性脱钩
+        // es6重新解释了顶层和全局的概念，在顶层如window，global，而在let、const、class则是全局变量，和顶层有本质的区别。
+        let number = 20;
+        const obj = {
+            number: 10,
+            show() {
+                console.log(this.number * 2);
+            },
+            // 这里this指向的上下文环境就是window
+            test: () => {
+                console.log(this.number * 2 * Math.PI);
+            }
+        }
+
+        obj.show(); // 20
+        obj.test(); // NAN   
+
+    </script> -->
+    <script>
+        var a = 1;
+        console.log(window.a);  // 1
+        let b = 5;
+        console.log(window.b);  // undefined
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal{
+            static fly(food){
+                this.food = food;
+            };
+            constructor({newFood = "green"} = {}) {
+                this.newFood = newFood;
+            }
+        }    
+
+        let a = new Animal({newFood: "red"});
+        a.fly('orange'); // Uncaught TypeError: a.fly is not a function
+        /*
+        static仅仅在创建它们的构造函数中存在的，不可以传递给任何子级。所以a不存在fly方法，抛出错误
+        */
+    </script>
+</body>
+</html>

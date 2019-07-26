@@ -8,24 +8,24 @@
 <script>
 import Bus from '../bus'
 export default {
-  data() {
+  data () {
     return {
       name: '',
-      b:'B->A'
+      b: 'B->A'
     }
   },
   // 从A接收值到B中
-  mounted() {
+  mounted () {
     let that = this
-    Bus.$on('sisterKey', (msg)=>{
+    Bus.$on('sisterKey', (msg) => {
       that.name = msg
     })
   },
   // B给A传值
   methods: {
-    handleClick(){
+    handleClick () {
       Bus.$emit('bKey', this.b)
     }
-  },
+  }
 }
 </script>

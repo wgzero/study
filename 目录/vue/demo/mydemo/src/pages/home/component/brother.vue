@@ -8,23 +8,23 @@
 <script>
 import Bus from '../bus'
 export default {
-  data() {
+  data () {
     return {
       msg: 'A->B',
       name: ''
     }
   },
   methods: {
-    SisterValue(){
+    SisterValue () {
       Bus.$emit('sisterKey', this.msg)
     }
   },
   // 接收从b传给a的值
-  mounted() {
-    let that =this
-    Bus.$on('bKey', (msg)=>{
+  mounted () {
+    let that = this
+    Bus.$on('bKey', (msg) => {
       that.name = msg
     })
-  },
+  }
 }
 </script>

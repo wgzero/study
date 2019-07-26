@@ -9,18 +9,18 @@
 <script>
 export default {
   props: {
-    inputValue: String,
+    inputValue: String
   },
-  data() {
+  data () {
     return {
       msg: '我是子组件内容'
     }
   },
   methods: {
-    handleClick(){
+    handleClick () {
       this.$emit('ChildMsg', this.msg)
     }
-  },
+  }
 
 }
 </script>
