@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 
+    从遍历数组和对象方面来使用下面4个：
+    for、for-in、for-of、map之间的区别：
+    1.for就是普通的循环遍历
+    2.for-in是获取到key-value的value值，for-in原型链上所有属性都将被访问，用hasOwnProperty()方法解决
+    3.for-of（ES6语法）
+    4.forEach(ES5语法，但是不支持break、continue、return)
+ -->
+<body>
+    <script>
+        // 1.for用来遍历数组的
+        // let arr = ['one', 'two', 'three'];
+        // for(let i=0;i<arr.length;i++){
+        //     console.log(arr[i]);
+        // }
+
+        // let obj = {
+        //     name: 'zero',
+        //     age: 18,
+        //     sex: '男'
+        // }
+        // for(let i=0;i<obj.length;i++){
+        //     console.log('31231',obj[i]);
+        // }
+
+
+
+        // 2.for-in
+        // let arr = ['one', 'two', 'three'];
+        // for(let i in arr){
+        //     console.log('arr', arr[i]); // 得到值  one,two,three
+        //     console.log('arr', i); //数组下标索引  0,1,2
+        // }
+
+        // let obj = {
+        //     name: 'zero',
+        //     age: 18,
+        //     sex: '男'
+        // }
+        // for(let i in obj){
+        //     console.log('obj', i); // 键：name, age, sex
+        //     console.log('obj', obj[i]); // 值：zero, 18, 男
+        // }
+
+    </script>
+</body>
+</html>
