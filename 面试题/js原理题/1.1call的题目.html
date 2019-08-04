@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function a(){
+            console.log(1);
+        }    
+        function b(){
+            console.log(2);
+        }
+        a.call(b); // 1   这里是1，是因为call改变的是this，而a输出的值并没有改变
+        a.call.call(b);  // 2  这里是2，牵扯到call的实现原理，中间包含了一层 context.fn = a.call
+        
+    </script>
+</body>
+</html>

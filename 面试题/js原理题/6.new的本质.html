@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 模拟实现new -->
+    <script>
+        // 1.创建一个函数
+        function myNew(fun){
+            // 2.返回一个方法
+            return function(){
+                // 3.创建一个新对象将其隐式原型指向构造函数原型
+                let obj = {
+                    // 4.往原型上添加属性
+                    __proto__: fun.prototype
+                };
+                // 5.执行构造函数
+                fun.call(obj, ...arguments);
+                // 6.返回该对象
+                return obj;
+            }
+        }    
+        
+        function person(name, age){
+            this.name = name;
+            this.age = age;
+            console.log(this.name,this.age);
+        }
+
+        let p = myNew(person)('zero', 20);
+        // console.log(p);
+        
+    </script>
+</body>
+</html>

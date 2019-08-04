@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 
+    思路： 类似call，但返回的是一个函数
+ -->
+<body>
+    <!-- 模拟bind函数，改变this指向 -->
+    <script>
+        Function.prototype.myBind = function(context){
+            if(typeof this !== 'function'){
+                throw new TypeError('not function');
+            };
+            let _this = this;
+            let arg = [...arguments].slice(1);
+            return function F(){
+                if(this instanceof F){
+                    return new _this(...arg, ...arguments);
+                }else{
+                    return _this.apply(context, arg.concat(...arguments));
+                }
+            }
+        }
+    </script>
+    <!-- 调用myBind，来改变this指向 -->
+    <script>
+        let show = { name: 'summer' };
+        let obj = {
+            name: 'zero',
+            age: 20,
+            sayHi(){
+                console.log(this.name);
+            }
+        };
+        obj.sayHi();  // zero
+        obj.sayHi.bind(show)(); // summer   通过bind来改变this指向
+    </script>
+</body>
+</html>

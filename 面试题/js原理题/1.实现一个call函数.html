@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 
+    思路：将要改变的this指向的方法挂载到目标this上执行并返回
+ -->
+
+<body>
+    <!-- 实现模拟call函数，改变this指向 -->
+    <script>
+        // 1.在原型上面挂载一个方法
+        Function.prototype.mycall = function (context) {
+            // 2.判断this不等于函数，抛出异常
+            if (typeof this !== 'function') {
+                throw new TypeError('not function');
+            }
+            // 3.当传参与不传参赋值
+            context = context || window;
+            // 4.这里的this指向函数
+            context.fn = this;
+            let arg = [...arguments].slice(1);
+            // console.log(arg);
+            let result = context.fn(...arg);
+            delete context.fn;
+            return result;
+        }    
+    </script>
+
+    <!-- 调用mycall实现改变this -->
+    <script>
+        window.color = 'red';
+        let s = { color: 'blud' };
+        function ShowColor() {
+            console.log(this.color);
+        }
+
+        // ShowColor.call(); // red 
+        // ShowColor.call(s); // blue
+
+        ShowColor.mycall(); // red
+        ShowColor.mycall(s); // blue
+
+        // console.log(window);
+    </script>
+</body>
+
+</html>
