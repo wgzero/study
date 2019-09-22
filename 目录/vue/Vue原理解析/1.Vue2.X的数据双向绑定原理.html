@@ -1,0 +1,54 @@
+<!--
+ * @Description: 
+ * @Version: 1.0
+ * @Author: zero
+ * @Date: 2019-08-25 14:43:16
+ * @LastEditors: zero
+ * @LastEditTime: 2019-08-25 17:51:47
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 
+    Vue2.X的数据双向绑定原理：是通过Object.defineProperty方法来实现的
+ -->
+<body>
+    <input type="text" v-model>
+    <p v-bind></p>
+    <p v-bind></p>
+    <p v-bind></p>
+    <script>
+        // 1.[v-model]获取行内属性
+        let txt = document.querySelector('[v-model]');
+        // 2.输入实时监听
+        txt.oninput = function(){
+            obj.name = txt.value;
+            // console.log(txt.value);
+        }
+
+        let obj = {};
+        // 3.IE8之前的浏览器不支持该方法   
+        // 第一个参数是设置的对象 第二个参数是修改的属性  第三个参数动态修改的内容
+        Object.defineProperty(obj, 'name', {
+            // 4.动态的获取值
+            get(){
+                // console.log('get取到值了');
+                return _name;
+            },
+            // 5.动态的设置值，其中的参数为动态值
+            set(value){
+                // console.log('set设置值了');
+                // obj.name = value;
+                let p =  document.querySelectorAll('[v-bind]')[0];
+                p.innerHTML = value;
+                // console.log('value',value)
+            }
+        })
+    </script>
+</body>
+</html>
